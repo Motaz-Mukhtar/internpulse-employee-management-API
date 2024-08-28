@@ -7,7 +7,7 @@ import employeesRouter from './routes/v1/employeesRouter';
 import departmentsRouter from './routes/v1/departmentsRouter';
 import rolesRouter from './routes/v1/rolesRouter';
 import projectsRouter from './routes/v1/projectsRouter';
-import employeesReviewsRouter from './routes/v1/employeesreviewsRouter';
+import employeesReviewsRouter from './routes/v1/employeesReviewsRouter';
 
 dotenv.config();
 
