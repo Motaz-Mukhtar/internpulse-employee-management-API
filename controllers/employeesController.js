@@ -110,17 +110,6 @@ class EmployeesController {
             const firstName = req.query.firstName;
             const lastName = req.query.lastName;
 
-            // if firstName or lastName is missing, return forbidden (403).
-            if (
-                !firstName ||
-                !lastName
-            ) {
-                return handleError({
-                    status: StatusCodes.FORBIDDEN,
-                    message: 'data is missing',
-                }, res);
-            }
-
             let employee;
 
             // if employeeId exists get by employeeId
@@ -129,6 +118,16 @@ class EmployeesController {
                 if (Types.ObjectId.isValid(employeeId))
                     employee = await Employees.findById(employeeId);
             } else {
+                // if firstName or lastName is missing, return forbidden (403).
+                if (
+                    !firstName ||
+                    !lastName
+                ) {
+                    return handleError({
+                        status: StatusCodes.FORBIDDEN,
+                        message: 'data is missing',
+                    }, res);
+                }
                 employee = await Employees.findOne({ firstName, lastName });
             }
 
